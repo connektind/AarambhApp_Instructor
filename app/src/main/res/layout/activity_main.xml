@@ -1,0 +1,162 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.MainActivity"
+    android:id="@+id/root_layout">
+
+    <!--
+    <com.google.android.exoplayer.AspectRatioFrameLayout
+        android:id="@+id/cameraPreview_afl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        >
+        -->
+    <android.opengl.GLSurfaceView
+        android:id="@+id/cameraPreview_surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
+    <!--
+   </com.google.android.exoplayer.AspectRatioFrameLayout>
+    -->
+
+
+    <View
+        android:id="@+id/transparent_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#77000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="4dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:layout_alignParentStart="true">
+        <ImageButton
+            android:id="@+id/settings_button"
+            style="?borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:onClick="showSetResolutionDialog"
+            android:src="@drawable/ic_settings_white_24dp"
+            />
+
+        <ImageButton
+            android:id="@+id/changeCameraButton"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:onClick="changeCamera"
+            android:src="@drawable/ic_switch_camera_white_24dp"
+            />
+
+        <ImageButton
+            android:id="@+id/mic_mute_button"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:onClick="toggleMute"
+            android:src="@drawable/ic_mic_mute_on_24"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/stream_live_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_live"
+            android:padding="5dp"
+            android:text="@string/live_indicator"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="visible">
+    <LinearLayout
+        android:weightSum="3"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:id="@+id/live_chat_layout"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:layout_marginTop="50mm"
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/darker_gray"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messagelist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:clipToPadding="false"
+            android:scrollbars="vertical" />
+
+        <LinearLayout
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+
+                android:id="@+id/message"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:hint="your message"
+
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:text="send"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/toggle_broadcasting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="Go Live"
+            android:padding="15dp"
+            android:onClick="toggleBroadcasting"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_login_bg"
+            android:textAppearance="?android:textAppearanceMedium"
+            />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
